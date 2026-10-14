@@ -576,7 +576,7 @@ try{
  const cfg=window.FORTNITE_SUPABASE_CONFIG;
  if(cfg&&cfg.url&&cfg.anonKey&&!cfg.url.includes('TON-PROJET')){
   const response=await fetch(cfg.url.replace(/\/$/,'')+'/rest/v1/competitions?select=details&source=eq.fortnite-cups',{
-   headers:{apikey:cfg.anonKey,Authorization:'Bearer '+cfg.anonKey}
+   headers:{apikey:cfg.anonKey}
   });
   if(response.ok){
    const rows=await response.json(),unique=new Map();
