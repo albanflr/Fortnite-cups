@@ -14,3 +14,15 @@
 
 ## Important
 Cette migration remplit la base de données mais ne change pas encore la façon dont le site charge son calendrier. Le site continue donc d'utiliser ses données locales jusqu'à ce que la connexion côté navigateur soit configurée et testée. Ne publiez jamais de clé `service_role` ou `secret` dans le code du site. Seules l'URL du projet et la clé publishable/anon peuvent être utilisées côté navigateur avec les politiques RLS en place.
+
+
+## Connexion automatique du site
+Le fichier `index.html` essaie maintenant de lire les compétitions dans Supabase si `supabase-config.js` est configuré. Si la connexion échoue ou si la base est vide, le site conserve automatiquement son calendrier intégré.
+
+Après l'import SQL :
+1. Ouvrir `supabase-config.js` dans GitHub.
+2. Cliquer sur le crayon **Edit**.
+3. Remplacer `https://TON-PROJET.supabase.co` par l'URL du projet Supabase et `COLLE-ICI-LA-CLE-PUBLISHABLE` par la clé **Publishable** (ou l'ancienne clé `anon`).
+4. Enregistrer avec **Commit changes**.
+
+N'utiliser ni clé `secret`, ni `service_role`. Ne pas fusionner cette branche avant d'avoir exécuté l'import et testé le site.
